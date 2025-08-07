@@ -1,0 +1,13 @@
+<h1>Bem-vindo(a) a central do assinante</h1>
+
+<section class="login">
+
+    <img src="logo.png" alt="Logo Rede Portal">
+    <h5>Autenticação</h5>
+
+    <form (ngSubmit)="login()" [formGroup]="loginForm">
+        <p-inputmask [autoClear]="false" class="input" mask="999.999.999-99" formControlName="cpf" placeholder="000.000.000-00" />
+        <span style="color: red;" *ngIf="erro">Verifique o cpf informado</span>
+        <p-button type="submit" label="Acessar" [disabled]="!formularioValido()" />
+    </form>
+</section>

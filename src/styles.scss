@@ -1,1 +1,46 @@
-/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap');
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background-color: rgb(236, 236, 236);
+    color: black;
+    font-family: "Oswald", sans-serif;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+
+/* ---- Input MASK ---- */
+
+p-inputmask input.p-inputtext{
+    background: transparent;
+    padding: 5px;
+    color: black;
+    text-align: center;
+}
+
+/* 
+ Ordem do selector: 
+
+ 1° o componente do prime ng
+ 2° o que ele gera (sua tag)
+ 3° a sua classe
+
+ <Componente> <Elemento>.<classe>:focus
+
+
+*/
+p-inputmask input.p-inputtext:focus:enabled {
+  border-color: #007BFF;
+  box-shadow: 0 0 0 2px #007BFF40;
+}
+
+/* --------------------- */
+
+
