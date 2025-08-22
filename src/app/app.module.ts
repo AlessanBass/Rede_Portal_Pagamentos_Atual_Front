@@ -20,6 +20,9 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { ToastModule } from 'primeng/toast';
 import { MessageModule } from 'primeng/message';
 import { MessageService } from 'primeng/api';
+import { BreadcrumbModule } from 'primeng/breadcrumb';
+import { SplitButtonModule } from 'primeng/splitbutton';
+import { CardModule } from 'primeng/card';
 
 registerLocaleData(localePt);
 
@@ -31,7 +34,7 @@ registerLocaleData(localePt);
     HeaderComponent,
     FooterComponent,
     LoginComponent,
-    DashboardComponent
+    DashboardComponent,
   ],
   imports: [
     BrowserModule,
@@ -41,7 +44,10 @@ registerLocaleData(localePt);
     InputMaskModule,
     ButtonModule,
     ToastModule,
-    MessageModule
+    MessageModule,
+    BreadcrumbModule,
+    SplitButtonModule,
+    CardModule
   ],
   providers: [
     provideAnimationsAsync(),

@@ -22,9 +22,9 @@ export class LoginComponent {
     private router: Router,
     private messageService: MessageService
   ) {
-    
+
     this.loginForm = this.fb.group({
-      cpf:['', [Validators.required]]
+      cpf: ['', [Validators.required]]
     });
   }
 
@@ -32,25 +32,25 @@ export class LoginComponent {
   formularioValido() {
     return this.loginForm.valid;
   }
-show() {
-        this.messageService.add({ severity: 'info', summary: 'Info', detail: 'Message Content' });
-    }
-  login(){
-    this.http.get<CustomResponse<LoginResponse>>(`https://localhost:7098/v1/auth/login/${this.loginForm.get('cpf')?.value}` ).subscribe({
-      next: (res) =>{
-        if(res.success){
+  show() {
+    this.messageService.add({ severity: 'info', summary: 'Info', detail: 'Message Content' });
+  }
+  login() {
+    this.http.get<CustomResponse<LoginResponse>>(`https://localhost:7098/v1/auth/login/${this.loginForm.get('cpf')?.value}`).subscribe({
+      next: (res) => {
+        if (res.success) {
           console.log("sucesso");
           const token = res.data.token;
           localStorage.setItem('tokenPortal', token);
           this.router.navigate(['/dashboard']);
-        }else{
-          this.messageService.add({severity:'Error', summary: 'Info', detail: 'Verifique o cpf informado'})
+        } else {
+          this.messageService.add({ severity: 'Error', summary: 'Info', detail: 'Verifique o cpf informado' })
         }
       },
-      error: (err) =>{
-       console.log("deu erro", err);
-       this.erro = true;
-        this.messageService.add({severity:'error', summary: 'Info', detail: `Erro: ${err}`})
+      error: (err) => {
+        console.log("deu erro", err);
+        this.erro = true;
+        this.messageService.add({ severity: 'error', summary: 'Info', detail: `Erro: ${err}` })
       }
     });
   }

@@ -1,1 +1,75 @@
-<h1>Olá {{data.name}}</h1>
+<div class="container-header">
+    <p-breadcrumb [model]="items" [home]="home" />
+    <p-splitbutton class="button" label="{{user.name}}" dropdownIcon="pi pi-cog" [model]="itemsMenu" />
+</div>
+
+
+<h2 class="h2">Aqui você pode acompanhar as suas faturas</h2>
+
+
+
+<div class="container-main">
+
+    <!-- <p-card header="Faturas"> -->
+    <div class="faturas">
+        <div class="title-h3">
+            <h3 class="h3">Histórico de Faturas:</h3>
+        </div>
+        <div class="container-for" *ngFor="let invoice of user.invoices">
+
+            <div class="container-full">
+                <div class="container-left">
+                    <p> <span>Data de vencimento:</span> {{invoice.dueDate | date:'dd/MM/yyyy' }}</p>
+                    <p> <span>Valor:</span> {{invoice.amount| currency: 'BRL':'symbol-narrow':'1.2-2':'pt-BR' }}</p>
+                </div>
+
+                <div class="container-esq">
+
+                    <div *ngIf="invoice.isPaid; else notPaid">
+                        <p>Pagamento realizado!</p>
+                    </div>
+
+                    <ng-template #notPaid>
+                        <button>Pagar</button>
+                    </ng-template>
+
+                    <div *ngIf="invoice.isExpired; else isExpired">
+                        <p class="p-status isExpired">Boleto Vencido</p>
+                    </div>
+
+                    <ng-template #isExpired>
+                        <p class="p-status isNotExpired">Em Aberto</p>
+                    </ng-template>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!--  </p-card> -->
+
+    <!-- <p-card header="Planos ativos"> -->
+    <div class="plan">
+        <div class="title-h3">
+            <h3 class="h3">Seu plano atual:</h3>
+        </div>
+        <p class="m-0">
+            <span>{{user.plan.name}}</span> 
+        </p>
+
+        <p class="m-0">
+            <span>Valor:</span> {{user.plan.planValue | currency: 'BRL':'symbol-narrow':'1.2-2':'pt-BR'}}
+        </p>
+
+        <p class="m-0">
+            <span>Megas:</span> {{user.plan.megaQuantities}} Mb
+        </p>
+
+        <p class="m-0">
+            <span>Tipo:</span> {{typeplan[user.plan.type]}}
+        </p>
+    </div>
+    <!--    </p-card> -->
+
+</div>
+
+<app-footer></app-footer>

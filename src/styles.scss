@@ -1,3 +1,4 @@
+@import "primeicons/primeicons.css";
 @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap');
 *{
     padding: 0;
@@ -44,3 +45,50 @@ p-inputmask input.p-inputtext:focus:enabled {
 /* --------------------- */
 
 
+/* :root .p-breadcrumb {
+ background: transparent;
+} */
+nav.p-breadcrumb.p-component{
+    background-color: transparent;
+}
+
+/* .p-breadcrumb-item-link{
+    --p-breadcrumb-item-hover-color: black;
+    cursor: pointer;
+} */
+
+
+.p-breadcrumb-item-icon {
+   --p-breadcrumb-item-icon-color: white;
+   --p-icon-size: 1.5rem;
+    padding: 5px;
+}
+
+/* .p-splitbutton{
+    --p-button-primary-background: black;
+    --p-button-primary-hover-background:rgb(60, 60, 60);
+    --p-button-primary-border-color: black;
+    --p-breadcrumb-item-color: white;
+    color: white;
+   
+}
+
+.p-button-label{
+    color: white;
+}
+
+.pi{
+    color: white;
+} */
+
+.p-tieredmenu{
+    --p-tieredmenu-background: white;
+}
+
+.p-tieredmenu-item-label{
+    color: black;
+}
+
+div.p-tieredmenu-item-content:hover{
+    border: 1px solid red($color: #c53b3b);
+}

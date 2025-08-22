@@ -1,0 +1,99 @@
+.container-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 5px;
+    background-color: black;
+    color: white;
+}
+
+.button {
+    margin-right: 2rem;
+}
+
+.container-main {
+    padding: 10px;
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    /* align-items: baseline; */
+}
+
+.faturas {
+    padding: 10px;
+    width: 50%;
+    box-shadow: 0px 0px 5px black;
+    border-radius: 10px;
+    /* max-height: 300px;
+    overflow-y: auto;   
+    overflow-x: hidden; */
+}
+
+.plan {
+    padding: 10px;
+    width: 30%;
+    box-shadow: 0px 0px 5px black;
+    border-radius: 10px;
+}
+
+.container-full {
+    padding: 5px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    border-bottom: 1px solid rgb(168, 167, 167);
+    align-items: center;
+}
+
+.container-for :hover {
+    background-color: rgb(214, 212, 212);
+}
+
+.h2 {
+    text-align: center;
+    padding: 10px;
+    text-transform: uppercase;
+}
+
+.title-h3 {
+    padding: 5px;
+    background-color: #1fd492;
+    color: black;
+    border-radius: 8px;
+    margin-bottom: 5px;
+}
+
+.h3 {
+    margin-left: 5px;
+}
+
+span {
+    font-weight: bold;
+}
+
+.container-esq {
+    padding: 5px;
+    display: flex;
+    flex-direction: column-reverse;
+}
+
+.p-status {
+    padding: 2px;
+    min-width: 100px;
+    text-align: center;
+}
+
+.isExpired {
+    border: 1px solid red;
+    border-radius: 5px;
+    color: red;
+    margin-bottom: 5px;
+}
+
+.isNotExpired {
+    border: 1px solid rgb(8, 193, 8);
+    border-radius: 5px;
+    color: rgb(8, 193, 8);
+    margin-bottom: 5px;
+}
