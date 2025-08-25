@@ -13,10 +13,8 @@ export class AuthGuard implements CanActivate {
     const token = localStorage.getItem('tokenPortal');
 
     if (token && !this.tokenExpirado(token)) {
-      console.log("sucesso dashboarad");
       return true;
     }
-      console.log("erro dashboarad");
 
     this.router.navigate(['/']);
     return false;

@@ -23,6 +23,11 @@ import { MessageService } from 'primeng/api';
 import { BreadcrumbModule } from 'primeng/breadcrumb';
 import { SplitButtonModule } from 'primeng/splitbutton';
 import { CardModule } from 'primeng/card';
+import { DialogModule } from 'primeng/dialog';
+import { DynamicDialogModule } from 'primeng/dynamicdialog';
+import { PaymentComponent } from './dashboard/payment/payment.component';
+import { ClipboardModule } from '@angular/cdk/clipboard';
+import { ProgressSpinnerModule } from 'primeng/progressspinner';
 
 registerLocaleData(localePt);
 
@@ -35,6 +40,7 @@ registerLocaleData(localePt);
     FooterComponent,
     LoginComponent,
     DashboardComponent,
+    PaymentComponent,
   ],
   imports: [
     BrowserModule,
@@ -47,7 +53,11 @@ registerLocaleData(localePt);
     MessageModule,
     BreadcrumbModule,
     SplitButtonModule,
-    CardModule
+    CardModule,
+    DialogModule,
+    DynamicDialogModule,
+    ClipboardModule,
+    ProgressSpinnerModule
   ],
   providers: [
     provideAnimationsAsync(),

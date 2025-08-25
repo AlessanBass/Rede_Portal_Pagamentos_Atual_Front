@@ -39,7 +39,6 @@ export class LoginComponent {
     this.http.get<CustomResponse<LoginResponse>>(`https://localhost:7098/v1/auth/login/${this.loginForm.get('cpf')?.value}`).subscribe({
       next: (res) => {
         if (res.success) {
-          console.log("sucesso");
           const token = res.data.token;
           localStorage.setItem('tokenPortal', token);
           this.router.navigate(['/dashboard']);
@@ -48,9 +47,8 @@ export class LoginComponent {
         }
       },
       error: (err) => {
-        console.log("deu erro", err);
         this.erro = true;
-        this.messageService.add({ severity: 'error', summary: 'Info', detail: `Erro: ${err}` })
+        this.messageService.add({ severity: 'error', summary: 'Info', detail: `Erro: ${err.error.errors[0].value}` })
       }
     });
   }

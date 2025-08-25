@@ -1,0 +1,17 @@
+<div *ngIf="carregando" class="loading">
+    <p-progress-spinner ariaLabel="loading" />
+</div>
+
+
+<div *ngIf="!carregando">
+  <img [src]="'data:image/png;base64,' + paymentResponse.pointOfInteraction.transactionData.qrCodeBase64"
+    alt="QR Code Pix">
+  <p>{{ paymentResponse.pointOfInteraction.transactionData.qrCode }}</p>
+  <button cdkCopyToClipboard="{{ paymentResponse.pointOfInteraction.transactionData.qrCode }}">
+    Copiar
+  </button>
+</div>
+
+<div *ngIf="paymentResponse.dateApproved">
+  <p>Pagamento realizado!</p>
+</div>
