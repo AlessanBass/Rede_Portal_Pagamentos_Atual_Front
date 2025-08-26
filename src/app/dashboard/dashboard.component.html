@@ -30,6 +30,7 @@
 
                         <div *ngIf="invoice.isPaid; else notPaid">
                             <p>Pagamento realizado!</p>
+                            <!-- <p>Pago em: {{invoice.paymentDate  | date:'dd/MM/yyyy'}}</p> -->
                         </div>
 
                         <ng-template #notPaid>

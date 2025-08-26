@@ -1,19 +1,38 @@
 <div *ngIf="carregando" class="loading">
-    <p-progress-spinner ariaLabel="loading" />
+  <p-progress-spinner ariaLabel="loading" />
 </div>
 
-
-<div *ngIf="!carregando" class="pix">
-  <img [src]="'data:image/png;base64,' + paymentResponse.pointOfInteraction.transactionData.qrCodeBase64"
-    alt="QR Code Pix">
-
-  <p class="copiaecola">{{ paymentResponse.pointOfInteraction.transactionData.qrCode }}</p>
-
-  <button class="btn-copy" (click)="copy()" cdkCopyToClipboard="{{ paymentResponse.pointOfInteraction.transactionData.qrCode }}">
-    Copiar
-  </button>
+<div class="payment-approved" *ngIf="statusApproved">
+  <div class="circle-div">
+    <i class="pi pi-check icon-approved"></i>
+  </div>
+  <p class="p-payment-status">Pagamento Aprovado com sucesso!</p>
 </div>
 
-<div *ngIf="paymentResponse.dateApproved">
-  <p>Pagamento realizado!</p>
+<div class="payment-reject" *ngIf="statusRejected">
+  <div class="circle-div">
+    <i class="pi pi-times icon-reject"></i>
+  </div>
+  <p class="p-payment-status">Falha ao processar pagamento! Tente novamente mais tarde...</p>
+</div>
+
+<div class="payment-inProcess" *ngIf="statusInprocess">
+  <div class="circle-div">
+    <i class="pi pi-spin pi-spinner-dotted icon-inProcess"></i>
+  </div>
+  <p class="p-payment-status">Processando pagamento...</p>
+</div>
+
+<div *ngIf="!statusApproved && !statusRejected && !statusInprocess">
+  <div *ngIf="!carregando" class="pix">
+    <img [src]="'data:image/png;base64,' + paymentResponse.pointOfInteraction.transactionData.qrCodeBase64"
+      alt="QR Code Pix">
+
+    <p class="copiaecola">{{ paymentResponse.pointOfInteraction.transactionData.qrCode }}</p>
+
+    <button class="btn-copy" (click)="copy()"
+      cdkCopyToClipboard="{{ paymentResponse.pointOfInteraction.transactionData.qrCode }}">
+      Copiar
+    </button>
+  </div>
 </div>

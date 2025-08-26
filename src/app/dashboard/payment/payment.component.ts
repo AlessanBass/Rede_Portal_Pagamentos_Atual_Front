@@ -8,6 +8,7 @@ import { PaymentResponseDto } from '../../../dtos/payment/PaymentResponse.dto';
 import { PaymentStatusDetailEnum } from '../../../enum/payment/payment-status-detail.enum';
 import { PaymentStatusEnum } from '../../../enum/payment/payment-status.enum';
 import { MessageService } from 'primeng/api';
+import { SignalRService } from '../../../services/signal-r.service';
 
 @Component({
   selector: 'app-payment',
@@ -20,8 +21,12 @@ export class PaymentComponent implements OnInit {
   invoice: InvoiceDto;
   userId: string;
   paymentResponse: PaymentResponseDto;
+  statusApproved: boolean = false;
+  statusRejected: boolean = false;
+  statusInprocess: boolean = false;
 
   constructor(private http: HttpClient,
+    private readonly signalRService: SignalRService,
     public ref: DynamicDialogRef,
     public config: DynamicDialogConfig,
     private messageService: MessageService,
@@ -34,6 +39,32 @@ export class PaymentComponent implements OnInit {
   carregando: boolean = false;
 
   ngOnInit(): void {
+    const token = localStorage.getItem('tokenPortal') || '';
+    this.signalRService.startConnection(token);
+
+    this.signalRService.paymentApproved$.subscribe((data) => {
+      console.log("Notificaod pelo signal", data);
+      if (data.status === "Aprroved") {
+        this.statusApproved = true;
+        this.statusInprocess = false;
+        this.statusRejected = false;
+
+        this.messageService.add({
+          severity: 'success',
+          summary: 'Pagamento aprovado',
+          detail: `Seu pagamento foi aprovado com sucesso!`
+        });
+      } else if (data.status === "Pending") {
+        this.statusInprocess = true;
+        this.statusApproved = false;
+        this.statusRejected = false;
+      }else{
+        this.statusInprocess = false;
+        this.statusApproved = false;
+        this.statusRejected = true;
+      }
+    });
+
     const paymentCreate: PaymentCreateDto = {
       invoiceId: this.invoice.invoiceId,
       userId: this.userId
@@ -56,7 +87,7 @@ export class PaymentComponent implements OnInit {
     });
   }
 
-  copy(){
-    this.messageService.add({ severity: 'success', summary:'Info', detail: 'Copiado!' })
+  copy() {
+    this.messageService.add({ severity: 'success', summary: 'Info', detail: 'Copiado!' })
   }
 }
