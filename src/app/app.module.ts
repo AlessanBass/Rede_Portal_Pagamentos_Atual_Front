@@ -28,6 +28,7 @@ import { DynamicDialogModule } from 'primeng/dynamicdialog';
 import { PaymentComponent } from './dashboard/payment/payment.component';
 import { ClipboardModule } from '@angular/cdk/clipboard';
 import { ProgressSpinnerModule } from 'primeng/progressspinner';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 registerLocaleData(localePt);
 
@@ -41,6 +42,7 @@ registerLocaleData(localePt);
     LoginComponent,
     DashboardComponent,
     PaymentComponent,
+    NotFoundComponent,
   ],
   imports: [
     BrowserModule,

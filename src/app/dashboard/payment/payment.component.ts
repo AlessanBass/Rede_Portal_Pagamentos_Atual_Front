@@ -7,6 +7,7 @@ import { CustomResponse } from '../../../interfaces/custom-response.interface';
 import { PaymentResponseDto } from '../../../dtos/payment/PaymentResponse.dto';
 import { PaymentStatusDetailEnum } from '../../../enum/payment/payment-status-detail.enum';
 import { PaymentStatusEnum } from '../../../enum/payment/payment-status.enum';
+import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-payment',
@@ -22,20 +23,21 @@ export class PaymentComponent implements OnInit {
 
   constructor(private http: HttpClient,
     public ref: DynamicDialogRef,
-    public config: DynamicDialogConfig
+    public config: DynamicDialogConfig,
+    private messageService: MessageService,
   ) {
 
-    this.invoice =  this.config.data.invoice;
-    this.userId =  this.config.data.userId;
+    this.invoice = this.config.data.invoice;
+    this.userId = this.config.data.userId;
   }
 
   carregando: boolean = false;
- 
+
   ngOnInit(): void {
-   const paymentCreate: PaymentCreateDto = {
-    invoiceId: this.invoice.invoiceId,
-    userId: this.userId
-   };
+    const paymentCreate: PaymentCreateDto = {
+      invoiceId: this.invoice.invoiceId,
+      userId: this.userId
+    };
 
     this.carregando = true;
     this.http.post<CustomResponse<PaymentResponseDto>>(`https://localhost:7098/v1/payments/`, paymentCreate).subscribe({
@@ -54,4 +56,7 @@ export class PaymentComponent implements OnInit {
     });
   }
 
+  copy(){
+    this.messageService.add({ severity: 'success', summary:'Info', detail: 'Copiado!' })
+  }
 }

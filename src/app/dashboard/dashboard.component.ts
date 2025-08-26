@@ -104,7 +104,6 @@ export class DashboardComponent implements OnInit {
   getUserById(userId: string) {
     this.loading = true;
     this.http.get<CustomResponse<UserFullDto>>(`https://localhost:7098/v1/users/${userId}`)
-    .pipe(delay(5000))
     .subscribe({
       next: (res) => {
         if (res.success) {

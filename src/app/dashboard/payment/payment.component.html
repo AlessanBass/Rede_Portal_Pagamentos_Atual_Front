@@ -3,11 +3,13 @@
 </div>
 
 
-<div *ngIf="!carregando">
+<div *ngIf="!carregando" class="pix">
   <img [src]="'data:image/png;base64,' + paymentResponse.pointOfInteraction.transactionData.qrCodeBase64"
     alt="QR Code Pix">
-  <p>{{ paymentResponse.pointOfInteraction.transactionData.qrCode }}</p>
-  <button cdkCopyToClipboard="{{ paymentResponse.pointOfInteraction.transactionData.qrCode }}">
+
+  <p class="copiaecola">{{ paymentResponse.pointOfInteraction.transactionData.qrCode }}</p>
+
+  <button class="btn-copy" (click)="copy()" cdkCopyToClipboard="{{ paymentResponse.pointOfInteraction.transactionData.qrCode }}">
     Copiar
   </button>
 </div>

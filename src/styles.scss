@@ -92,3 +92,9 @@ nav.p-breadcrumb.p-component{
 div.p-tieredmenu-item-content:hover{
     border: 1px solid red($color: #c53b3b);
 }
+
+.p-dialog .p-dialog-content {
+  background-color: #6a6a6b !important;
+  border-top: 1px solid rgb(190, 188, 188);
+  border-radius: 0px 0px 10px 10px;
+}
