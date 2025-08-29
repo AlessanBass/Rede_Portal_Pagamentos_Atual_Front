@@ -12,6 +12,10 @@ import { InvoiceDto } from '../../dtos/invoice/invoice.dto';
 import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { PaymentComponent } from './payment/payment.component';
 import { delay } from 'rxjs';
+import { UserService } from '../../services/user.service';
+import { ErrorHandlerService } from '../../services/error-handler.service';
+import { AuthService } from '../../services/auth.service';
+import { StorageKeys } from '../../configs/config';
 
 @Component({
   selector: 'app-dashboard',
@@ -25,6 +29,7 @@ export class DashboardComponent implements OnInit {
   items: MenuItem[];
   home: MenuItem
   userId: string;
+  isAdmin: boolean = false;
   itemsMenu = [
     {
       label: 'Dados Cadastrais',
@@ -63,6 +68,9 @@ export class DashboardComponent implements OnInit {
     private http: HttpClient,
     private fb: FormBuilder,
     private router: Router,
+    private readonly authService: AuthService,
+    private readonly userService: UserService,
+    private readonly errorHandlerService: ErrorHandlerService,
     private messageService: MessageService,
     public dialogService: DialogService
   ) {
@@ -74,13 +82,7 @@ export class DashboardComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    const token = localStorage.getItem('tokenPortal');
-    if (token) {
-      const decodedToken: any = jwtDecode(token);
-      this.userId = decodedToken.nameid;
-      this.getUserById(this.userId);
-    }
-
+    this.getUser();
   }
 
   pagar(invoice: InvoiceDto) {
@@ -97,33 +99,29 @@ export class DashboardComponent implements OnInit {
     });
 
     this.ref.onClose.subscribe(() => {
-      this.getUserById(this.userId);
+      this.getUser();
     });
   }
 
-  getUserById(userId: string) {
+  getUser() {
     this.loading = true;
-    this.http.get<CustomResponse<UserFullDto>>(`https://localhost:7098/v1/users/${userId}`)
-    .subscribe({
+
+    this.userService.getUserById().subscribe({
       next: (res) => {
-        if (res.success) {
-          this.user = res.data;
-          this.loading = false;
-        } else {
-          this.loading = false;
-          this.messageService.add({ severity: 'Error', summary: 'Info', detail: 'Verifique o cpf informado' })
-        }
+        this.user = res.data;
+        this.loading = false;
+        this.isAdmin = this.authService.hasClaim(StorageKeys.ADMIN);
       },
       error: (err) => {
         this.loading = false;
+        this.errorHandlerService.handleError(err);
         this.router.navigate(['/']);
-        this.messageService.add({ severity: 'error', summary: 'Info', detail: `Erro: ${err}` })
       }
     });
   }
 
-  sair(){
-    localStorage.removeItem("tokenPortal");
+  sair() {
+    this.authService.logout();
     this.router.navigate(['/']);
   }
 

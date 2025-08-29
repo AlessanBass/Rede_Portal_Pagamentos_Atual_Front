@@ -5,6 +5,9 @@ import { Router } from '@angular/router';
 import { MessageService } from 'primeng/api';
 import { CustomResponse } from '../../interfaces/custom-response.interface';
 import { LoginResponse } from '../../interfaces/login-response.interface';
+import { ErrorHandlerService } from '../../services/error-handler.service';
+import { AuthService } from '../../services/auth.service';
+import { ClaimDto } from '../../dtos/claims/claim.dto';
 
 @Component({
   selector: 'app-login',
@@ -15,12 +18,15 @@ import { LoginResponse } from '../../interfaces/login-response.interface';
 export class LoginComponent {
   loginForm: FormGroup;
   erro = false;
+  claims: ClaimDto[] = [];
 
   constructor(
     private http: HttpClient,
     private fb: FormBuilder,
     private router: Router,
-    private messageService: MessageService
+    private messageService: MessageService,
+    private readonly AuthService: AuthService,
+    private readonly errorHandlerService: ErrorHandlerService
   ) {
 
     this.loginForm = this.fb.group({
@@ -35,20 +41,18 @@ export class LoginComponent {
   show() {
     this.messageService.add({ severity: 'info', summary: 'Info', detail: 'Message Content' });
   }
+
   login() {
-    this.http.get<CustomResponse<LoginResponse>>(`https://localhost:7098/v1/auth/login/${this.loginForm.get('cpf')?.value}`).subscribe({
+    this.AuthService.login(this.loginForm.get('cpf')?.value).subscribe({
       next: (res) => {
-        if (res.success) {
-          const token = res.data.token;
-          localStorage.setItem('tokenPortal', token);
-          this.router.navigate(['/dashboard']);
-        } else {
-          this.messageService.add({ severity: 'Error', summary: 'Info', detail: 'Verifique o cpf informado' })
-        }
+        this.AuthService.setToken(res.data.token);
+        this.claims = res.data.claims;
+        this.AuthService.setClaims(this.claims);
+        this.router.navigate(['/dashboard']);
       },
       error: (err) => {
         this.erro = true;
-        this.messageService.add({ severity: 'error', summary: 'Info', detail: `Erro: ${err.error.errors[0].value}` })
+        this.errorHandlerService.handleError(err);
       }
     });
   }

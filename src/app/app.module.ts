@@ -29,6 +29,7 @@ import { PaymentComponent } from './dashboard/payment/payment.component';
 import { ClipboardModule } from '@angular/cdk/clipboard';
 import { ProgressSpinnerModule } from 'primeng/progressspinner';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { DasboardAdminComponent } from './dashboard/dasboard-admin/dasboard-admin.component';
 
 registerLocaleData(localePt);
 
@@ -43,6 +44,7 @@ registerLocaleData(localePt);
     DashboardComponent,
     PaymentComponent,
     NotFoundComponent,
+    DasboardAdminComponent,
   ],
   imports: [
     BrowserModule,
