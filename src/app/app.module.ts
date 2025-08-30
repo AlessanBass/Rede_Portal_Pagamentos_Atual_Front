@@ -30,6 +30,7 @@ import { ClipboardModule } from '@angular/cdk/clipboard';
 import { ProgressSpinnerModule } from 'primeng/progressspinner';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { DasboardAdminComponent } from './dashboard/dasboard-admin/dasboard-admin.component';
+import { UsersModule } from './dashboard/dasboard-admin/users/users.module';
 
 registerLocaleData(localePt);
 
@@ -61,7 +62,8 @@ registerLocaleData(localePt);
     DialogModule,
     DynamicDialogModule,
     ClipboardModule,
-    ProgressSpinnerModule
+    ProgressSpinnerModule,
+    UsersModule
   ],
   providers: [
     provideAnimationsAsync(),
