@@ -1,3 +1,26 @@
 .main{
-    border: 1px solid red;
+    padding: 10px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
 }
+
+.apresentation{
+    padding: 10px;
+    margin-bottom: 25px;
+    margin-top: 25px;
+}
+
+.icon-wrench{
+    font-size: 2.5rem;
+    padding: 5px;
+}
+
+.infos{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+

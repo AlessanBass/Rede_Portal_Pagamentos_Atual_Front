@@ -1,14 +1,14 @@
+<div class="backdrop"></div>
+
+<div class="apresentation">
+    <div class="infos">
+        <i class="pi pi-wrench icon-wrench"></i>
+        <h1>Painel do Administrador</h1>
+    </div>
+</div>
+
 <main class="main">
-    <nav class="nav">
-        <div>
-            <a routerLink="users">users</a>
-        </div>
-        <div>
-            <a href="">faturas</a>
-        </div>
-        <div>
-            <a href="">plans</a>
-        </div>
-    </nav>
-    <router-outlet></router-outlet>
+    <app-card [text]="`Gestão de usuários`" [icon]="`pi pi-users`" [url]="`users`" [description]="`Criar, editar, excluir e  ver faturas.`"></app-card>
+    <app-card [text]="`Gestão de planos`" [icon]="`pi pi-list-check`" [url]="`plans`" [description]="`Criar, editar, excluir.`"></app-card>
+    <app-card [text]="`Gestão de chamados`" [icon]="`pi pi-comments`" [url]="`plans`" [description]="`Criar, editar, excluir.`"></app-card>
 </main>

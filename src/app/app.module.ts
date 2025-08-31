@@ -31,6 +31,7 @@ import { ProgressSpinnerModule } from 'primeng/progressspinner';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { DasboardAdminComponent } from './dashboard/dasboard-admin/dasboard-admin.component';
 import { UsersModule } from './dashboard/dasboard-admin/users/users.module';
+import { CardComponent } from './card/card.component';
 
 registerLocaleData(localePt);
 
@@ -46,6 +47,7 @@ registerLocaleData(localePt);
     PaymentComponent,
     NotFoundComponent,
     DasboardAdminComponent,
+    CardComponent,
   ],
   imports: [
     BrowserModule,

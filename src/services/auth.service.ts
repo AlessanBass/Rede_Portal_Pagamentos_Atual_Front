@@ -51,6 +51,13 @@ export class AuthService {
         return decoded['nameid'] || null;
     }
 
+    getNameUser(): string {
+        const decoded = this.getDecodedToken();
+        if (!decoded) return '';
+
+        return decoded['unique_name'] || null;
+    }
+
     getUserRoles(): string[] {
         const decoded: any = this.getDecodedToken();
         if (!decoded) return [];

@@ -1,1 +1,43 @@
-<h2>Lista de usuários</h2>
+<div class="container-header">
+    <p-breadcrumb [model]="items" [home]="home" />
+    <p-splitbutton *ngIf="!loading" class="button" label="{{nameUser}}" dropdownIcon="pi pi-cog" [model]="itemsMenu" />
+</div>
+
+<div>
+    <button>Adicionar novo usuário</button>
+</div>
+<div>
+    <h2>Usuários Cadastrados</h2>
+</div>
+<div class="card-table">
+    <p-table #dtNC [value]="users" [paginator]="true" [rows]="10" [rowsPerPageOptions]="[10, 20, 50]"
+        responsiveLayout="stack" lazy="true" styleClass="custom-table"  
+        currentPageReportTemplate="Mostrando {first} de {last} de {totalRecords}." [showCurrentPageReport]="true"
+        (onLazyLoad)="paginate($event)" [sortField]="parameters.sort" [sortOrder]="parameters.order == 'asc' ? 1 : -1"
+        [totalRecords]="userTotal">
+        <ng-template #header>
+            <tr>
+                <th pSortableColumn="name">Nome <p-sortIcon field="name"></p-sortIcon> </th>
+                <th pSortableColumn="cpf">Cpf <p-sortIcon field="cpf"></p-sortIcon></th>
+                <th pSortableColumn="email">Email <p-sortIcon field="email"></p-sortIcon></th>
+                <th>Açoes</th>
+            </tr>
+        </ng-template>
+
+        <ng-template #body let-item>
+            <tr>
+                <td>{{ item.name }}</td>
+                <td>{{ item.cpf }}</td>
+                <td>{{ item.email }}</td>
+                <td>Ação</td>
+            </tr>
+        </ng-template>
+
+        <ng-template pTemplate="emptymessage">
+            <tr>
+                <td colspan="6" class="center">Nenhum Item encontrado.</td>
+            </tr>
+        </ng-template>
+
+    </p-table>
+</div>

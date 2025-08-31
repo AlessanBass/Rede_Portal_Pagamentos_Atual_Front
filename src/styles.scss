@@ -98,3 +98,54 @@ div.p-tieredmenu-item-content:hover{
   border-top: 1px solid rgb(190, 188, 188);
   border-radius: 0px 0px 10px 10px;
 }
+
+
+/* Fundo branco da tabela */
+.custom-table .p-datatable-tbody > tr {
+    background-color: rgb(223, 219, 219) !important;
+    border-bottom: 1px solid black; /* linha preta entre as linhas */
+}
+
+/* Cabeçalho com fundo branco e linhas pretas */
+.custom-table .p-datatable-thead > tr > th {
+    background-color: rgb(147, 145, 145) !important;
+    border-bottom: 2px solid black;
+    color: black;
+}
+
+/* Opcional: borda em volta da tabela */
+.custom-table .p-datatable-wrapper {
+    border: 1px solid black;
+}
+/* Linhas do corpo */
+.custom-table .p-datatable-tbody > tr > td {
+    color: black !important; /* texto das células */
+}
+
+/* Cabeçalho */
+.custom-table .p-datatable-thead > tr > th {
+    color: black !important; /* texto do cabeçalho */
+}
+
+/* Footer (se tiver) */
+.custom-table .p-datatable-tfoot > tr > td {
+    color: black !important;
+}
+
+/* Botões e ícones dentro da tabela (como p-sortIcon) */
+.custom-table .p-sortable-column .p-sortable-column-icon {
+    color: black !important;
+}
+
+.custom-table .p-datatable-tbody > tr:hover {
+    background-color: #848383 !important; /* cor clara ao passar o mouse */
+    color: black !important;               /* mantém o texto preto */
+    cursor: pointer;                       /* muda o cursor para indicar interatividade */
+}
+
+/* Paginator - fundo branco e bordas retas */
+.custom-table .p-paginator {
+  /*   background-color: white !important;
+    border-top: 1px solid black; */
+    border-radius: 0 0 1px 1px !important; /* remove arredondamento */
+}
