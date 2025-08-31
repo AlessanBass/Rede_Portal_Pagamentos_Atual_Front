@@ -88,33 +88,20 @@ export class ListaComponent implements OnInit {
         ? event.sortField[0]
         : (event.sortField ?? '');
      this.parameters.order = event.sortOrder == 1 ? "asc" : "desc";
-  /*   const rows = event.rows ?? 10;
-    const first = event.first ?? 0; */
-    
-   /*  this.parameters = {
-      pageSize: rows,
-      currentPage: Math.floor(first / rows) + 1,
-      sort: Array.isArray(event.sortField)
-        ? event.sortField[0]
-        : (event.sortField ?? ''),
-      order: event.sortOrder === 1 ? 'asc' : 'desc',
-    }; */
 
     this.getUsers(this.parameters);
   }
 
   getUsers(parameters: FilteredPagedListParameters) {
-    // colcoar um loading
     this.userService.getPagedList(this.parameters).subscribe({
       next: (res) => {
         this.userTotal = res.data.pagingInformation.totalCount;
         this.users = res.data.items;
-        console.log(this.users);
-        // final do loading
+        this.loading = false;
       },
       error: (err) => {
         this.handlerError.handleError(err);
-        // final do loading
+        this.loading = false;
       }
     });
   }

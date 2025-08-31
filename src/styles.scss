@@ -149,3 +149,12 @@ div.p-tieredmenu-item-content:hover{
     border-top: 1px solid black; */
     border-radius: 0 0 1px 1px !important; /* remove arredondamento */
 }
+
+.loading{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+    height: 50vh;
+    align-items: center;
+}

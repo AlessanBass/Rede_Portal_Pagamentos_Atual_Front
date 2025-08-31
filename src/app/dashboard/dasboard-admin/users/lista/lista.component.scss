@@ -11,14 +11,29 @@
     margin-right: 2rem;
 }
 
-
-
-
-
 .card-table{
    /*  padding: 5px; */
     width: 90%;
     margin: 0 auto;
     background-color: white;
     box-shadow: 0px 0px 8px black;
+}
+
+.div-info{
+    padding: 10px;
+    margin-bottom: 5px;
+}
+
+.btn-new-user{
+    padding: 5px 10px;
+    background-color: rgb(6, 141, 96);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    text-transform: capitalize;
+}
+
+.btn-new-user:hover{
+    background-color: rgb(20, 212, 148);
 }
