@@ -1,6 +1,6 @@
 <div class="container-header">
     <p-breadcrumb [model]="items" [home]="home" />
-    <p-splitbutton *ngIf="!loading" class="button" label="{{user.name}}" dropdownIcon="pi pi-cog" [model]="itemsMenu" />
+    <p-splitbutton *ngIf="!loading" class="button" label="{{user.fullName}}" dropdownIcon="pi pi-cog" [model]="itemsMenu" />
 </div>
 
 <div *ngIf="loading" class="loading">

@@ -12,21 +12,27 @@
     <div>
         <button class="btn-new-user" routerLink="cadastro">Adicionar novo usuário</button>
     </div>
-
+    
     <div class="div-info">
         <h2>Usuários Cadastrados</h2>
+        
+        <div class="container-search">
+            <input id="search" type="text" pInputText placeholder="Buscar por usuário" pSize="small" [(ngModel)]="search"/>
+            <i class="pi pi-search icon-search" (click)="searchUser()"></i>
+            <i class="pi pi-times icon-clear" (click)="clear()"></i>
+        </div>
     </div>
 
     <div class="card-table">
         <p-table #dtNC [value]="users" [paginator]="true" [rows]="10" [rowsPerPageOptions]="[10, 20, 50]"
             responsiveLayout="stack" lazy="true" styleClass="custom-table"
-            currentPageReportTemplate="Mostrando {first} de {last} de {totalRecords}." [showCurrentPageReport]="true"
+            currentPageReportTemplate="Mostrando {first} de {last} de {totalRecords}" [showCurrentPageReport]="true"
             (onLazyLoad)="paginate($event)" [sortField]="parameters.sort"
             [sortOrder]="parameters.order == 'asc' ? 1 : -1" [totalRecords]="userTotal">
             
             <ng-template #header>
                 <tr>
-                    <th pSortableColumn="name">Nome <p-sortIcon field="name"></p-sortIcon> </th>
+                    <th pSortableColumn="fullName">Nome <p-sortIcon field="fullName"></p-sortIcon> </th>
                     <th pSortableColumn="cpf">CPF <p-sortIcon field="cpf"></p-sortIcon></th>
                     <th pSortableColumn="email">Email <p-sortIcon field="email"></p-sortIcon></th>
                     <th>Açoes</th>
@@ -35,7 +41,7 @@
 
             <ng-template #body let-item>
                 <tr>
-                    <td>{{ item.name }}</td>
+                    <td>{{ item.fullName }}</td>
                     <td>{{ item.cpf }}</td>
                     <td>{{ item.email }}</td>
                     <td>Ação</td>

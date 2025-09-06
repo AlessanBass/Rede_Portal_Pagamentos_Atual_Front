@@ -10,6 +10,8 @@ import { AuthService } from "./auth.service";
 import { UserFullDto } from "../dtos/user/user-full.dto";
 import { FilteredPagedListParameters } from "../dtos/pagedlist/filtered-paged-list-parameters";
 import { PagedListResponse } from "../interfaces/paged-list-response";
+import { UserSimpleDto } from "../dtos/user/user-simple.dto";
+import { UserCreateDto } from "../dtos/user/user-create.dto";
 
 @Injectable({ providedIn: 'root' })
 export class UserService {
@@ -26,10 +28,20 @@ export class UserService {
         return this.http.get<CustomResponse<UserFullDto>>(`${this.url}users/${userId}`);
     }
 
-    getPagedList(parameters: FilteredPagedListParameters): Observable<CustomResponse<PagedListResponse<UserFullDto>>>{
+    getPagedList(parameters: FilteredPagedListParameters): Observable<CustomResponse<PagedListResponse<UserFullDto>>> {
         return this.http.get<CustomResponse<PagedListResponse<UserFullDto>>>(`${this.url}users/`, {
-            params: {...parameters}
+            params: { ...parameters }
         })
+    }
+
+    getSimplePagedList(parameters: FilteredPagedListParameters): Observable<CustomResponse<PagedListResponse<UserSimpleDto>>> {
+        return this.http.get<CustomResponse<PagedListResponse<UserSimpleDto>>>(`${this.url}users/`, {
+            params: { ...parameters }
+        })
+    }
+
+    create(userDto: UserCreateDto): Observable<CustomResponse<void>>{
+        return this.http.post<CustomResponse<void>>(`${this.url}users/`, userDto);
     }
 
 

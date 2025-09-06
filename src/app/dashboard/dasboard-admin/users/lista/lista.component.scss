@@ -22,6 +22,10 @@
 .div-info{
     padding: 10px;
     margin-bottom: 5px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: space-between;
 }
 
 .btn-new-user{
@@ -36,4 +40,29 @@
 
 .btn-new-user:hover{
     background-color: rgb(20, 212, 148);
+}
+
+.icon-search{
+    padding: 9px;
+    background-color: blue;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.icon-search:hover{
+    background-color: rgb(6, 6, 203);
+}
+
+
+.icon-clear{
+    padding: 9px;
+    background-color: red;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.container-search{
+    margin-right: 60px;
 }

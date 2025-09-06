@@ -10,3 +10,59 @@
 .button {
     margin-right: 2rem;
 }
+
+
+.container-form {
+    padding: 5px;
+    width: 70%;
+    margin: 0 auto;
+    box-shadow: 0px 0px 8px #918080;
+    border-radius: 10px;
+}
+
+form {
+    padding: 5px;
+    /*    border: 1px solid red; */
+}
+
+.required {
+    padding: 2px;
+    color: red;
+}
+
+.container-lable-input {
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+}
+
+.container-footer-form {
+    padding: 5px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.container-flex {
+    padding: 5px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.error-form {
+    color: red;
+}
+
+.h2-register {
+    padding: 10px;
+    margin: 15px auto;
+    width: 50%;
+    text-align: center;
+    border-radius: 10px;
+    background: #009700;
+    color: white;
+    text-transform: uppercase;
+}

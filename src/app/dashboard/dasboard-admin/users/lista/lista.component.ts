@@ -8,6 +8,7 @@ import { FilteredPagedListParameters } from '../../../../../dtos/pagedlist/filte
 import { UserService } from '../../../../../services/user.service';
 import { ErrorHandlerService } from '../../../../../services/error-handler.service';
 import { TableLazyLoadEvent } from 'primeng/table';
+import { UserSimpleDto } from '../../../../../dtos/user/user-simple.dto';
 
 @Component({
   selector: 'app-lista',
@@ -21,13 +22,14 @@ export class ListaComponent implements OnInit {
   home: MenuItem;
   loading: boolean = true;
   nameUser: string = '';
+  search: string = '';
 
-  user: UserFullDto;
-  users: UserFullDto[] = [];
+  user: UserSimpleDto;
+  users: UserSimpleDto[] = [];
   userTotal: number = 0;
   parameters: FilteredPagedListParameters = {
     search: '',
-    sort: 'name',
+    sort: 'cpf',
     order: "asc"
   }
 
@@ -93,7 +95,7 @@ export class ListaComponent implements OnInit {
   }
 
   getUsers(parameters: FilteredPagedListParameters) {
-    this.userService.getPagedList(this.parameters).subscribe({
+    this.userService.getSimplePagedList(this.parameters).subscribe({
       next: (res) => {
         this.userTotal = res.data.pagingInformation.totalCount;
         this.users = res.data.items;
@@ -104,5 +106,20 @@ export class ListaComponent implements OnInit {
         this.loading = false;
       }
     });
+  }
+
+  clear(){
+    this.search = '';
+    this.parameters.search = this.search;
+
+    this.getUsers(this.parameters);
+  }
+
+  searchUser(){
+    if(this.search !== '' || this.search !== null || this.search !== undefined){
+      this.parameters.search = this.search;
+
+      this.getUsers(this.parameters);
+    }
   }
 }

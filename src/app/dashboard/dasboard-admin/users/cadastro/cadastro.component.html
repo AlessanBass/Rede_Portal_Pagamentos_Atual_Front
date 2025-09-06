@@ -1,7 +1,227 @@
 <div class="container-header">
     <p-breadcrumb [model]="items" [home]="home" />
-    <p-splitbutton  class="button" label="{{nameUser}}" dropdownIcon="pi pi-cog" [model]="itemsMenu" />
+    <p-splitbutton class="button" label="{{nameUser}}" dropdownIcon="pi pi-cog" [model]="itemsMenu" />
+</div>
+
+<div class="h2-register">
+    <h2>Cadastro de novo usuário</h2>
 </div>
 
 
-<h2>Aqui vai ter um formulário onde vamos cadastrar os usuários</h2>
+<div class="container-form">
+    <form [formGroup]="createForm">
+
+        <p-fieldset legend="Dados do usuário" [toggleable]="true" class="custom-fieldset">
+
+            <div class="container-flex">
+                <div class="container-lable-input">
+                    <label for="firstName">
+                        <span>Nome:</span>
+                        <span class="required">*</span>
+                    </label>
+                    <input id="firstName" type="text" pInputText placeholder="Informe seu nome" pSize="small"
+                        formControlName="firstName" />
+
+                    <div *ngFor="let error of getFormErrors('firstName')">
+                        <small class="error-form"> {{error}} </small>
+                    </div>
+                </div>
+
+                <div class="container-lable-input">
+                    <label for="lastName">
+                        <span>Sobrenome:</span>
+                        <span class="required">*</span>
+                    </label>
+                    <input id="lastName" type="text" pInputText placeholder="Informe seu sobrenome" pSize="small"
+                        formControlName="lastName" />
+
+                    <div *ngFor="let error of getFormErrors('lastName')">
+                        <small class="error-form"> {{error}} </small>
+                    </div>
+                </div>
+
+                <div class="container-lable-input">
+                    <label for="cpf">
+                        <span>CPF:</span>
+                        <span class="required">*</span>
+                    </label>
+                    <p-inputmask [autoClear]="false" class="input" mask="999.999.999-99" formControlName="cpf"
+                        placeholder="000.000.000-00" pSize="small" />
+
+                    <div *ngFor="let error of getFormErrors('cpf')">
+                        <small class="error-form"> {{error}} </small>
+                    </div>
+                </div>
+
+                <div class="container-lable-input">
+                    <label for="dateOfBirth">
+                        <span>Data de Nascimento:</span>
+                        <span class="required">*</span>
+                    </label>
+                    <p-datepicker dateFormat="dd/mm/yy" [showIcon]="true" id="dateOfBirth" [showOnFocus]="false"
+                        formControlName="dateOfBirth" size="small" placeholder="01/01/1999" />
+
+                    <div *ngFor="let error of getFormErrors('dateOfBirth')">
+                        <small class="error-form"> {{error}} </small>
+                    </div>
+                </div>
+            </div>
+
+
+        </p-fieldset>
+
+        <br>
+
+        <p-fieldset legend="Informações para contato" [toggleable]="true" class="custom-fieldset">
+            <div class="container-flex">
+                <div class="container-lable-input">
+                    <label for="email">
+                        <span>E-mail:</span>
+                        <span class="required">*</span>
+                    </label>
+                    <input id="email" type="text" pInputText placeholder="exemplo@gmail.com" pSize="small"
+                        formControlName="email" />
+
+                    <div *ngFor="let error of getFormErrors('email')">
+                        <small class="error-form"> {{error}} </small>
+                    </div>
+                </div>
+
+                <div class="container-lable-input">
+                    <label for="phoneNumber">
+                        <span>Telefone:</span>
+                    </label>
+                    <p-inputmask [autoClear]="false" class="input" mask="(99)99999-9999" formControlName="phoneNumber"
+                        placeholder="(99) 99999-9999" pSize="small" />
+
+                    <div *ngFor="let error of getFormErrors('phoneNumber')">
+                        <small class="error-form"> {{error}} </small>
+                    </div>
+                </div>
+
+
+                <div class="container-lable-input">
+                    <label for="whatsApp">
+                        <span>WhatsApp:</span>
+                        <span class="required">*</span>
+                    </label>
+                    <p-inputmask [autoClear]="false" id="whatsApp" class="input" mask="(99)99999-9999"
+                        formControlName="whatsApp" placeholder="(99) 99999-9999" pSize="small" />
+
+                    <div *ngFor="let error of getFormErrors('whatsApp')">
+                        <small class="error-form"> {{error}} </small>
+                    </div>
+                </div>
+            </div>
+        </p-fieldset>
+
+        <br>
+
+        <p-fieldset legend="Plano escolhido" [toggleable]="true" class="custom-fieldset">
+            <p-select [options]="plans" formControlName="planId" placeholder="Selecione o plano" optionLabel="name"
+                [checkmark]="true" size="small">
+            </p-select>
+
+            <div *ngFor="let error of getFormErrors('planId')">
+                <small class="error-form"> {{error}} </small>
+            </div>
+        </p-fieldset>
+
+        <br>
+
+        <p-fieldset legend="Endereço" [toggleable]="true" class="custom-fieldset">
+            <div class="container-flex">
+                <div class="container-lable-input">
+                    <label for="street">
+                        <span>Rua:</span>
+                        <span class="required">*</span>
+                    </label>
+                    <input id="street" type="text" pInputText placeholder="Informe a rua" pSize="small"
+                        formControlName="street" />
+
+                    <div *ngFor="let error of getFormErrors('street')">
+                        <small class="error-form"> {{error}} </small>
+                    </div>
+                </div>
+
+                <div class="container-lable-input">
+                    <label for="number">
+                        <span>Número:</span>
+                    </label>
+                    <input id="number" type="text" pInputText placeholder="Informe a rua" pSize="small"
+                        formControlName="number" />
+
+                    <div *ngFor="let error of getFormErrors('number')">
+                        <small class="error-form"> {{error}} </small>
+                    </div>
+                </div>
+
+                <div class="container-lable-input">
+                    <label for="neighborhood">
+                        <span>Bairro:</span>
+                        <span class="required">*</span>
+                    </label>
+                    <input id="neighborhood" type="text" pInputText placeholder="Informe o Bairro" pSize="small"
+                        formControlName="neighborhood" />
+
+                    <div *ngFor="let error of getFormErrors('neighborhood')">
+                        <small class="error-form"> {{error}} </small>
+                    </div>
+                </div>
+            </div>
+
+            <div class="container-flex">
+                <div class="container-lable-input">
+                    <label for="cep">
+                        <span>CEP:</span>
+                        <span class="required">*</span>
+                    </label>
+                    <p-inputmask [autoClear]="false" id="cep" class="input" mask="99.999-999" formControlName="cep"
+                        placeholder="45.638-000" pSize="small" />
+
+                    <div *ngFor="let error of getFormErrors('cep')">
+                        <small class="error-form"> {{error}} </small>
+                    </div>
+                </div>
+
+                <div class="container-lable-input">
+                    <label for="city">
+                        <span>Cidade:</span>
+                        <span class="required">*</span>
+                    </label>
+                    <input id="city" type="text" pInputText placeholder="Informe a cidade" pSize="small"
+                        formControlName="city" />
+
+                    <div *ngFor="let error of getFormErrors('city')">
+                        <small class="error-form"> {{error}} </small>
+                    </div>
+                </div>
+
+                <div class="container-lable-input">
+                    <label for="number">
+                        <span>Ponto de referência:</span>
+                    </label>
+                    <input id="number" type="text" pInputText placeholder="Informe um ponto de referência" pSize="small"
+                        formControlName="reference" />
+
+                    <div *ngFor="let error of getFormErrors('reference')">
+                        <small class="error-form"> {{error}} </small>
+                    </div>
+                </div>
+            </div>
+        </p-fieldset>
+
+        <br>
+
+        <div class="container-footer-form">
+            <div>
+                <span class="required">* Item Obrigatório</span>
+            </div>
+
+            <div>
+                <button pButton pRipple type="submit" label="Cadastrar" [disabled]="!formIsValid()"
+                    class="p-button-success" (click)="cadastrar()"></button>
+            </div>
+        </div>
+    </form>
+</div>

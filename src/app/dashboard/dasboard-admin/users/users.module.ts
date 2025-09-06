@@ -15,6 +15,8 @@ import { CadastroComponent } from './cadastro/cadastro.component';
 import { SharedModule } from '../../../shared/shared.module';
 import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { authInterceptor } from '../../../../interceptors/auth.interceptor';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
 
 @NgModule({
   declarations: [
@@ -32,7 +34,9 @@ import { authInterceptor } from '../../../../interceptors/auth.interceptor';
     SplitButtonModule,
     TableModule,
     ProgressSpinnerModule,
-    SharedModule
+    SharedModule,
+    ReactiveFormsModule,
+    FormsModule
   ]
   
 })

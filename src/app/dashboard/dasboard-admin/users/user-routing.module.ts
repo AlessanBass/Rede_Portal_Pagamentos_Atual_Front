@@ -9,7 +9,7 @@ const routes: Routes = [
     path: '', component: UsersAppComponent,
     children: [
       { path: '', component: ListaComponent },
-      { path: 'cadastro', component: CadastroComponent },
+      { path: 'cadastro', component: CadastroComponent, title: 'Cadastro novo usuário' },
     ]
   }
 ];
