@@ -75,3 +75,33 @@
     border-radius: 10px;
     text-transform: uppercase;
 }
+
+.actions{
+    display: flex;
+    justify-content: center;
+}
+
+.icon-actions{
+  font-size: 20px;
+  padding: 5px;
+}
+
+.position-center{
+    text-align: center;
+}
+
+.action-data-user{
+   color: blue;
+}
+
+.action-delete-user{
+    color: red;
+}
+
+.action-edit-user{
+    color: blueviolet;
+}
+
+.action-invoices-user{
+    color: #013939;
+}

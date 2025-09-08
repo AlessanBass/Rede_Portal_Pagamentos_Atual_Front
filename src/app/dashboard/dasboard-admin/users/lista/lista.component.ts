@@ -122,4 +122,8 @@ export class ListaComponent implements OnInit {
       this.getUsers(this.parameters);
     }
   }
+
+  editar(userId: string ){
+    
+  }
 }

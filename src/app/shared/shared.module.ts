@@ -7,6 +7,7 @@ import { FloatLabelModule } from 'primeng/floatlabel';
 import { DatePickerModule } from 'primeng/datepicker';
 import { FieldsetModule } from 'primeng/fieldset';
 import { SelectModule } from 'primeng/select';
+import { TooltipModule } from 'primeng/tooltip';
 
 @NgModule({
   declarations: [],
@@ -20,7 +21,8 @@ import { SelectModule } from 'primeng/select';
     FloatLabelModule,
     DatePickerModule,
     FieldsetModule,
-    SelectModule
+    SelectModule,
+    TooltipModule
   ]
 })
 export class SharedModule { }
