@@ -9,18 +9,26 @@
 </div>
 
 <div *ngIf="!loading">
-    <div>
-        <button class="btn-new-user" routerLink="cadastro">Adicionar novo usuário</button>
-    </div>
-    
+
+
     <div class="div-info">
-        <h2>Usuários Cadastrados</h2>
-        
+        <div>
+            <button class="btn-new-user" routerLink="cadastro">
+                <i class="pi pi-plus"></i>
+                Adicionar novo usuário
+            </button>
+        </div>
+
         <div class="container-search">
-            <input id="search" type="text" pInputText placeholder="Buscar por usuário" pSize="small" [(ngModel)]="search"/>
+            <input id="search" type="text" pInputText placeholder="Buscar por usuário" pSize="small"
+                [(ngModel)]="search" />
             <i class="pi pi-search icon-search" (click)="searchUser()"></i>
             <i class="pi pi-times icon-clear" (click)="clear()"></i>
         </div>
+    </div>
+ 
+    <div class="div-h2">
+       <h2>Usuários Cadastrados</h2>
     </div>
 
     <div class="card-table">
@@ -29,7 +37,7 @@
             currentPageReportTemplate="Mostrando {first} de {last} de {totalRecords}" [showCurrentPageReport]="true"
             (onLazyLoad)="paginate($event)" [sortField]="parameters.sort"
             [sortOrder]="parameters.order == 'asc' ? 1 : -1" [totalRecords]="userTotal">
-            
+
             <ng-template #header>
                 <tr>
                     <th pSortableColumn="fullName">Nome <p-sortIcon field="fullName"></p-sortIcon> </th>
