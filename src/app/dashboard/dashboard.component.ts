@@ -28,7 +28,7 @@ export class DashboardComponent implements OnInit {
   ref: DynamicDialogRef;
   items: MenuItem[];
   home: MenuItem
-  userId: string;
+  userId: string | null;
   isAdmin: boolean = false;
   itemsMenu = [
     {
@@ -40,6 +40,12 @@ export class DashboardComponent implements OnInit {
     {
       label: 'Faturas',
       icon: 'pi pi-calendar',
+      command: () => {
+      },
+    },
+    {
+      label: 'Abrir Chamado',
+      icon: 'pi pi-megaphone',
       command: () => {
       },
     },
@@ -82,6 +88,7 @@ export class DashboardComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.userId = this.authService.getUserId();
     this.getUser();
   }
 
