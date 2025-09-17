@@ -1,0 +1,107 @@
+.container-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 5px;
+    background-color: black;
+    color: white;
+}
+
+.button {
+    margin-right: 2rem;
+}
+
+.card-table{
+   /*  padding: 5px; */
+    width: 90%;
+    margin: 0 auto;
+    background-color: white;
+    box-shadow: 0px 0px 8px black;
+}
+
+.div-info{
+    padding: 10px;
+    margin-bottom: 5px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: space-between;
+}
+
+.btn-new-user{
+    padding: 5px 10px;
+    background-color: rgb(6, 141, 96);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    text-transform: capitalize;
+    margin-left: 50px;
+}
+
+.btn-new-user:hover{
+    background-color: rgb(20, 212, 148);
+}
+
+.icon-search{
+    padding: 9px;
+    background-color: blue;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.icon-search:hover{
+    background-color: rgb(6, 6, 203);
+}
+
+
+.icon-clear{
+    padding: 9px;
+    background-color: red;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.container-search{
+    margin-right: 60px;
+}
+
+.div-h2{
+    padding: 10px;
+    margin-left: 10px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    text-transform: uppercase;
+}
+
+.actions{
+    display: flex;
+    justify-content: center;
+}
+
+.icon-actions{
+  font-size: 20px;
+  padding: 5px;
+}
+
+.position-center{
+    text-align: center;
+}
+
+.action-data-user{
+   color: blue;
+}
+
+.action-delete-user{
+    color: red;
+}
+
+.action-edit-user{
+    color: blueviolet;
+}
+
+.action-invoices-user{
+    color: #013939;
+}

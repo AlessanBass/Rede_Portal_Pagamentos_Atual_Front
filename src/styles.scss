@@ -1,1 +1,180 @@
-/* You can add global styles to this file, and also import other style files */
+@import "primeicons/primeicons.css";
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap');
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background-color: rgb(236, 236, 236);
+    color: black;
+    font-family: "Oswald", sans-serif;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+
+/* ---- Input MASK ---- */
+
+p-inputmask input.p-inputtext{
+    background: transparent;
+    padding: 5px;
+    color: black;
+    text-align: center;
+}
+
+/* 
+ Ordem do selector: 
+
+ 1° o componente do prime ng
+ 2° o que ele gera (sua tag)
+ 3° a sua classe
+
+ <Componente> <Elemento>.<classe>:focus
+
+
+*/
+p-inputmask input.p-inputtext:focus:enabled {
+  border-color: #007BFF;
+  box-shadow: 0 0 0 2px #007BFF40;
+}
+
+/* --------------------- */
+
+
+/* :root .p-breadcrumb {
+ background: transparent;
+} */
+nav.p-breadcrumb.p-component{
+    background-color: transparent;
+}
+
+/* .p-breadcrumb-item-link{
+    --p-breadcrumb-item-hover-color: black;
+    cursor: pointer;
+} */
+
+
+.p-breadcrumb-item-icon {
+   --p-breadcrumb-item-icon-color: white;
+   --p-icon-size: 1.5rem;
+    padding: 5px;
+}
+
+/* .p-splitbutton{
+    --p-button-primary-background: black;
+    --p-button-primary-hover-background:rgb(60, 60, 60);
+    --p-button-primary-border-color: black;
+    --p-breadcrumb-item-color: white;
+    color: white;
+   
+}
+
+.p-button-label{
+    color: white;
+}
+
+.pi{
+    color: white;
+} */
+
+.p-tieredmenu{
+    --p-tieredmenu-background: white;
+}
+
+.p-tieredmenu-item-label{
+    color: black;
+}
+
+div.p-tieredmenu-item-content:hover{
+    border: 1px solid red($color: #c53b3b);
+}
+
+.p-dialog .p-dialog-content {
+  background-color: #6a6a6b !important;
+  border-top: 1px solid rgb(190, 188, 188);
+  border-radius: 0px 0px 10px 10px;
+}
+
+
+/* Fundo branco da tabela */
+.custom-table .p-datatable-tbody > tr {
+    background-color: rgb(223, 219, 219) !important;
+    border-bottom: 1px solid black; /* linha preta entre as linhas */
+}
+
+/* Cabeçalho com fundo branco e linhas pretas */
+.custom-table .p-datatable-thead > tr > th {
+    background-color: rgb(147, 145, 145) !important;
+    border-bottom: 2px solid black;
+    color: black;
+}
+
+/* Opcional: borda em volta da tabela */
+.custom-table .p-datatable-wrapper {
+    border: 1px solid black;
+}
+/* Linhas do corpo */
+.custom-table .p-datatable-tbody > tr > td {
+    color: black !important; /* texto das células */
+}
+
+/* Cabeçalho */
+.custom-table .p-datatable-thead > tr > th {
+    color: black !important; /* texto do cabeçalho */
+}
+
+/* Footer (se tiver) */
+.custom-table .p-datatable-tfoot > tr > td {
+    color: black !important;
+}
+
+/* Botões e ícones dentro da tabela (como p-sortIcon) */
+.custom-table .p-sortable-column .p-sortable-column-icon {
+    color: black !important;
+}
+
+.custom-table .p-datatable-tbody > tr:hover {
+    background-color: #848383 !important; /* cor clara ao passar o mouse */
+    color: black !important;               /* mantém o texto preto */
+    cursor: pointer;                       /* muda o cursor para indicar interatividade */
+}
+
+/* Paginator - fundo branco e bordas retas */
+.custom-table .p-paginator {
+  /*   background-color: white !important;
+    border-top: 1px solid black; */
+    border-radius: 0 0 1px 1px !important; /* remove arredondamento */
+}
+
+.loading{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+    height: 50vh;
+    align-items: center;
+}
+
+.p-inputtext{
+    background-color: white !important;
+    color: rgb(0, 0, 0) !important;
+}
+
+.custom-fieldset .p-fieldset{
+    background-color: white !important;
+    color: black !important;
+}
+
+.p-fieldset-legend{
+   /*  background-color: #07e896 !important; */
+
+}
+
+.p-fieldset-legend-label{
+   /*  color: black !important; */
+    text-transform: uppercase;
+}

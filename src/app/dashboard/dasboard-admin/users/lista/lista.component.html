@@ -1,0 +1,74 @@
+<div class="container-header">
+    <p-breadcrumb [model]="items" [home]="home" />
+    <p-splitbutton *ngIf="!loading" class="button" label="{{nameUser}}" dropdownIcon="pi pi-cog" [model]="itemsMenu" />
+</div>
+
+
+<div *ngIf="loading" class="loading">
+    <p-progress-spinner ariaLabel="loading" />
+</div>
+
+<div *ngIf="!loading">
+
+
+    <div class="div-info">
+        <div>
+            <button class="btn-new-user" routerLink="cadastro">
+                <i class="pi pi-plus"></i>
+                Adicionar novo usuário
+            </button>
+        </div>
+
+        <div class="container-search">
+            <input id="search" type="text" pInputText placeholder="Buscar por usuário" pSize="small"
+                [(ngModel)]="search" />
+            <i class="pi pi-search icon-search" (click)="searchUser()"></i>
+            <i class="pi pi-times icon-clear" (click)="clear()"></i>
+        </div>
+    </div>
+ 
+    <div class="div-h2">
+       <h2>Usuários Cadastrados</h2>
+    </div>
+
+    <div class="card-table">
+        <p-table #dtNC [value]="users" [paginator]="true" [rows]="10" [rowsPerPageOptions]="[10, 20, 50]"
+            responsiveLayout="stack" lazy="true" styleClass="custom-table"
+            currentPageReportTemplate="Mostrando {first} de {last} de {totalRecords}" [showCurrentPageReport]="true"
+            (onLazyLoad)="paginate($event)" [sortField]="parameters.sort"
+            [sortOrder]="parameters.order == 'asc' ? 1 : -1" [totalRecords]="userTotal">
+
+            <ng-template #header>
+                <tr>
+                    <th class="" pSortableColumn="fullName">Nome <p-sortIcon field="fullName"></p-sortIcon> </th>
+                    <th class="" pSortableColumn="cpf">CPF <p-sortIcon field="cpf"></p-sortIcon></th>
+                    <th class="" pSortableColumn="email">Email <p-sortIcon field="email"></p-sortIcon></th>
+                    <th class="position-center" >Ações</th>
+                </tr>
+            </ng-template>
+
+            <ng-template #body let-item>
+                <tr>
+                    <td>{{ item.fullName }}</td>
+                    <td>{{ item.cpf }}</td>
+                    <td>{{ item.email }}</td>
+                    <td class="actions">
+                        <i class="icon-actions action-data-user pi pi-user" pTooltip="Ver dados do usuário" tooltipPosition="top"></i>
+                        <i class="icon-actions action-invoices-user pi pi-book" pTooltip="Ver faturas usuário" tooltipPosition="top"></i>
+                        <i class="icon-actions action-edit-user pi pi-pencil" pTooltip="Editar dados do usuário" tooltipPosition="top"></i>
+                        <i class="icon-actions pi pi-comments" pTooltip="Ver chamados" tooltipPosition="top"></i>
+                        <i class="icon-actions action-delete-user pi pi-trash" pTooltip="Excluir/desativar usuário" tooltipPosition="top"></i>
+                    </td>
+                </tr>
+            </ng-template>
+
+            <ng-template pTemplate="emptymessage">
+                <tr>
+                    <td colspan="6" class="center">Nenhum Item encontrado.</td>
+                </tr>
+            </ng-template>
+
+        </p-table>
+    </div>
+</div>
+<router-outlet></router-outlet>

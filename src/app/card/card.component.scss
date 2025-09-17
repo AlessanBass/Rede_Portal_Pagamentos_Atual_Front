@@ -1,0 +1,35 @@
+.card{
+    padding: 5px;
+    width: 100%;
+    box-shadow: 0px 0px 8px rgb(63, 63, 63);
+    border-radius: 10px;
+    min-width: 300px;
+}
+
+.header{
+    padding: 5px;
+    display: flex;
+    justify-content: center;
+    background: #34c97d;
+    border-radius: 10px;
+   /*  border: 1px solid red; */
+}
+
+i{
+    padding: 10px;
+    font-size: 3rem;
+    text-align: center;
+}
+
+.body{
+    padding: 5px;
+    margin-top: 2px;
+/*     border-top: 1px solid rgb(142, 142, 142);
+    border-bottom: 1px solid rgb(142, 142, 142); */
+}
+
+.footer{
+    padding: 5px;
+    display: flex;
+    justify-content: right;
+}
