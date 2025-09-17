@@ -16,13 +16,15 @@ import { SharedModule } from '../../../shared/shared.module';
 import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { authInterceptor } from '../../../../interceptors/auth.interceptor';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { EditarComponent } from './editar/editar.component';
 
 
 @NgModule({
   declarations: [
     UsersAppComponent,
     ListaComponent,
-    CadastroComponent
+    CadastroComponent,
+    EditarComponent
   ],
   imports: [
     CommonModule,

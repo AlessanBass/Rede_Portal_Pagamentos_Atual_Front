@@ -9,6 +9,7 @@ import { PaymentStatusDetailEnum } from '../../../enum/payment/payment-status-de
 import { PaymentStatusEnum } from '../../../enum/payment/payment-status.enum';
 import { MessageService } from 'primeng/api';
 import { SignalRService } from '../../../services/signal-r.service';
+import { ErrorHandlerService } from '../../../services/error-handler.service';
 
 @Component({
   selector: 'app-payment',
@@ -27,6 +28,7 @@ export class PaymentComponent implements OnInit {
 
   constructor(private http: HttpClient,
     private readonly signalRService: SignalRService,
+    private readonly handleError: ErrorHandlerService,
     public ref: DynamicDialogRef,
     public config: DynamicDialogConfig,
     private messageService: MessageService,
@@ -80,6 +82,7 @@ export class PaymentComponent implements OnInit {
       },
       error: (err) => {
         this.carregando = false;
+        this.handleError.handleError(err);
         console.log("deu erro", err);
         //this.router.navigate(['/']);
         //this.messageService.add({ severity: 'error', summary: 'Info', detail: `Erro: ${err}` })

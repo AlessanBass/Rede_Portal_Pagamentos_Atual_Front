@@ -124,6 +124,7 @@ export class ListaComponent implements OnInit {
   }
 
   editar(userId: string ){
-    
+    this.router.navigate(['dashboard/users/editar']);
   }
+
 }
